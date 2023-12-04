@@ -11,7 +11,6 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 public class Usuario extends Base {
 private String nombreUsuario;
     @Column(name="Rol")

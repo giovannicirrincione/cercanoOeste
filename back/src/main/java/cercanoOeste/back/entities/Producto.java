@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 public class Producto extends Base{
     private String nombre;
     private String descripcion;
     private float monto;
+    private String urlImagen;
 
     @Column(name = "fechaAlta")
     private LocalDateTime fechaAlta;

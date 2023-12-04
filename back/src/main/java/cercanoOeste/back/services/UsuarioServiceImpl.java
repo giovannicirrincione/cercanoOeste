@@ -4,7 +4,9 @@ import cercanoOeste.back.entities.Usuario;
 import cercanoOeste.back.repositories.BaseRepository;
 import cercanoOeste.back.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UsuarioServiceImpl extends BaseServiceImpl<Usuario,Long> implements UsuarioService{
     @Autowired
     UsuarioRepository usuarioRepository;
