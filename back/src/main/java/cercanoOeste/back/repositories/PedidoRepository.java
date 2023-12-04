@@ -1,5 +1,6 @@
 package cercanoOeste.back.repositories;
 
+import cercanoOeste.back.DTOS.DTOPedidoInfo;
 import cercanoOeste.back.entities.Pedido;
 import org.springframework.stereotype.Repository;
 
