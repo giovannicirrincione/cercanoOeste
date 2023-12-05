@@ -9,6 +9,7 @@ import cercanoOeste.back.repositories.BaseRepository;
 import cercanoOeste.back.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -47,6 +48,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
             DTOProducto producto = new DTOProducto();
             producto.setCantidad(detalle.getCantidadProducto());
             producto.setNombre(detalle.getProducto().getNombre());
+            producto.setSubtotal(detalle.getSubtotalPedido());
             productos.add(producto);
         }
         pedidoInfo.setProductoList(productos);

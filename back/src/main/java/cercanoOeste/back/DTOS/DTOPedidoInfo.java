@@ -32,4 +32,20 @@ public class DTOPedidoInfo {
     public void setProductoList(List<DTOProducto> productoList) {
         this.productoList = productoList;
     }
+
+    public LocalTime getHoraEstimadaEntrega() {
+        return horaEstimadaEntrega;
+    }
+
+    public float getTotal() {
+        return Total;
+    }
+
+    public TipoEnvio getTipoEnvio() {
+        return tipoEnvio;
+    }
+
+    public List<DTOProducto> getProductoList() {
+        return productoList;
+    }
 }

@@ -14,13 +14,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "api/v1/pedidos")
 public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceImpl>{
 
-    @GetMapping("/realizarPedido")
+    @PostMapping("/realizarPedido")
     public ResponseEntity<?> realizarPedido(@RequestBody Pedido pedido){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(servicio.realizarPedido(pedido));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" + e.getMessage() + "\"}"));
-
         }
     }
 
