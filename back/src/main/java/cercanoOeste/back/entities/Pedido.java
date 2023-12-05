@@ -40,8 +40,7 @@ public class Pedido extends Base{
     private FormaPago formaPago;
 
     @Column(name = "estadoPedido")
-    @Enumerated(EnumType.STRING)
-    private EstadoPedido estadoPedido;
+    private String estadoPedido;
 
     @Column(name = "tipoEnvio")
     @Enumerated(EnumType.STRING)

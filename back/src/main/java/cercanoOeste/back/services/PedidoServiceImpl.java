@@ -11,6 +11,7 @@ import cercanoOeste.back.enumerations.EstadoPedido;
 import cercanoOeste.back.enumerations.TipoEnvio;
 import cercanoOeste.back.repositories.BaseRepository;
 import cercanoOeste.back.repositories.PedidoRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,11 +32,10 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
     // Caso de Uso realizar pedido
     @Override
     public DTOPedidoAconfirmar realizarPedido(Pedido pedido) {
-        pedido.setEstadoPedido(EstadoPedido.EN_ESPERA);
+        pedido.setEstadoPedido("EN_ESPERA");
         DTOPedidoAconfirmar pedidoDTO = new DTOPedidoAconfirmar();
-        pedidoDTO.setEstadoPedido(EstadoPedido.EN_ESPERA);
+        pedidoDTO.setEstadoPedido("EN_ESPERA");
         Pedido pedidoPersistido = pedidoRepository.save(pedido);
-        System.out.println(EstadoPedido.EN_ESPERA.name());
         return pedidoDTO;
     }
     //Buscar pedidos a confirmar
