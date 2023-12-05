@@ -5,6 +5,7 @@ import cercanoOeste.back.DTOS.DTOProducto;
 import cercanoOeste.back.entities.DetallePedido;
 import cercanoOeste.back.entities.Pedido;
 import cercanoOeste.back.enumerations.EstadoPedido;
+import cercanoOeste.back.enumerations.TipoEnvio;
 import cercanoOeste.back.repositories.BaseRepository;
 import cercanoOeste.back.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,15 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
 
         DTOPedidoInfo pedidoInfo = new DTOPedidoInfo();
 
-        LocalTime tiempoPreparacion = LocalTime.of(10, 15);
+
+        LocalTime tiempoPreparacion = null;
+        if (pedido.getTipoEnvio() == TipoEnvio.DELIVERY){
+            tiempoPreparacion = LocalTime.of(1, 30);
+        } else {
+            tiempoPreparacion = LocalTime.of(1, 15);
+        }
+
+
 
         LocalTime horaActual = LocalTime.now();
 
@@ -44,7 +53,6 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
         List<DTOProducto> productos = new ArrayList<DTOProducto>();
 
         for (DetallePedido detalle : detalles){
-
             DTOProducto producto = new DTOProducto();
             producto.setCantidad(detalle.getCantidadProducto());
             producto.setNombre(detalle.getProducto().getNombre());

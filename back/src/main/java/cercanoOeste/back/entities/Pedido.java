@@ -48,5 +48,4 @@ public class Pedido extends Base{
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetallePedido> detalles = new ArrayList<DetallePedido>();
-
 }
