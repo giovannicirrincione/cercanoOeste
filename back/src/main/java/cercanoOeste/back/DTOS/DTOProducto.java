@@ -1,5 +1,8 @@
 package cercanoOeste.back.DTOS;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class DTOProducto {
     private int cantidad;
     private String Nombre;

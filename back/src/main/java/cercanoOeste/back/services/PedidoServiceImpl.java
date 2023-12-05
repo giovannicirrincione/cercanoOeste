@@ -1,7 +1,10 @@
 package cercanoOeste.back.services;
 
+import cercanoOeste.back.Adapters.AdaptadorDistancia;
+import cercanoOeste.back.DTOS.DTOPedidoAconfirmar;
 import cercanoOeste.back.DTOS.DTOPedidoInfo;
 import cercanoOeste.back.DTOS.DTOProducto;
+import cercanoOeste.back.Factorys.FactoryAdapterCalculoDistancia;
 import cercanoOeste.back.entities.DetallePedido;
 import cercanoOeste.back.entities.Pedido;
 import cercanoOeste.back.enumerations.EstadoPedido;
@@ -10,7 +13,6 @@ import cercanoOeste.back.repositories.BaseRepository;
 import cercanoOeste.back.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -22,49 +24,28 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
     @Autowired
     PedidoRepository pedidoRepository;
 
+
     public PedidoServiceImpl(BaseRepository<Pedido, Long> baseRepository, PedidoRepository pedidoServiceRepository) {
         super(baseRepository);
     }
-
+    // Caso de Uso realizar pedido
     @Override
-    public DTOPedidoInfo realizarPedido(Pedido pedido) {
-        List<DetallePedido> detalles = pedido.getDetalles();
-
-        DTOPedidoInfo pedidoInfo = new DTOPedidoInfo();
-
-
-        LocalTime tiempoPreparacion = null;
-        if (pedido.getTipoEnvio() == TipoEnvio.DELIVERY){
-            tiempoPreparacion = LocalTime.of(1, 30);
-        } else {
-            tiempoPreparacion = LocalTime.of(1, 15);
-        }
-
-
-
-        LocalTime horaActual = LocalTime.now();
-
-        pedidoInfo.setHoraEstimadaEntrega(horaActual.plus(tiempoPreparacion.getHour(), ChronoUnit.HOURS)
-                .plus(tiempoPreparacion.getMinute(), ChronoUnit.MINUTES));
-        pedidoInfo.setTipoEnvio(pedido.getTipoEnvio());
-
-        pedidoInfo.setTotal(pedido.getMontoTotal());
-
-        List<DTOProducto> productos = new ArrayList<DTOProducto>();
-
-        for (DetallePedido detalle : detalles){
-            DTOProducto producto = new DTOProducto();
-            producto.setCantidad(detalle.getCantidadProducto());
-            producto.setNombre(detalle.getProducto().getNombre());
-            producto.setSubtotal(detalle.getSubtotalPedido());
-            productos.add(producto);
-        }
-        pedidoInfo.setProductoList(productos);
-
-        pedido.setEstadoPedido(EstadoPedido.EN_PREPARACION);
-
+    public DTOPedidoAconfirmar realizarPedido(Pedido pedido) {
+        pedido.setEstadoPedido(EstadoPedido.EN_ESPERA);
+        DTOPedidoAconfirmar pedidoDTO = new DTOPedidoAconfirmar();
+        pedidoDTO.setEstadoPedido(EstadoPedido.EN_ESPERA);
         Pedido pedidoPersistido = pedidoRepository.save(pedido);
-
-        return pedidoInfo;
+        System.out.println(EstadoPedido.EN_ESPERA.name());
+        return pedidoDTO;
+    }
+    //Buscar pedidos a confirmar
+    @Override
+    public List<Pedido> BusquedaAConfimar() throws Exception {
+        try {
+            List<Pedido> pedidosaconfir = pedidoRepository.BusquedaAConfimar();
+            return pedidosaconfir;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

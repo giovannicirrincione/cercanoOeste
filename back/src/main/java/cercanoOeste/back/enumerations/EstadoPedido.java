@@ -1,7 +1,10 @@
 package cercanoOeste.back.enumerations;
 
 public enum EstadoPedido {
-    EN_PREPARACION,
+    EN_ESPERA,
+    ACEPTADO,
     ENTREGADO,
-    LISTO_PARA_RETIRAR;
+    RECHAZADO,
+    LISTO_PARA_RETIRAR,
+    EN_PREPARACION;
 }

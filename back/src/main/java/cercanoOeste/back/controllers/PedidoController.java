@@ -22,5 +22,14 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" + e.getMessage() + "\"}"));
         }
     }
+    @GetMapping("/buscaraconfirmar")
+    public ResponseEntity<?> busquedaAconfirmar(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.BusquedaAConfimar());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
 
 }

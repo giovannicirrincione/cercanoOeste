@@ -28,6 +28,7 @@ public class Pedido extends Base{
 
    private float montoTotal;
 
+
     @Column(name = "fechaHoraPedido")
     private LocalDateTime fechaHoraPedido;
 
