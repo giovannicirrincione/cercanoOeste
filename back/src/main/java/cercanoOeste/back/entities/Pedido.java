@@ -16,6 +16,8 @@ import java.util.List;
 @Getter
 @Setter
 public class Pedido extends Base{
+    private int costoDelivery;
+    private int Demora;
    private String apellidoCliente;
 
    private String direccionEntrega;

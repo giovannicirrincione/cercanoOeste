@@ -33,10 +33,20 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
 
         }
     }
-    @PostMapping("/ConfirmarPedido")
-    public ResponseEntity<?> confirmarPedido(@RequestParam Long id){
+    @PostMapping("/AceptarPedidoDelivey")
+    public ResponseEntity<?> AceptarPedidoDelivery(@RequestParam Long id,@RequestParam int demora,@RequestParam int costoEnvio){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.confirmarPedido(id));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.AceptarPedidoDelivery(id,demora,costoEnvio));
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
+    @PostMapping("/AceptarPedidoTake")
+    public ResponseEntity<?> AceptarPedidoTake(@RequestParam Long id,@RequestParam int demora){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.AceptarPedidoTakeAway(id,demora));
         }
         catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
@@ -57,6 +67,40 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
     public ResponseEntity<?> PedidoListo(@RequestParam Long id){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.PedidoListo(id));
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
+    @PostMapping("/confirmarPedido")
+    public ResponseEntity<?> ConfirmarPedido(@RequestParam Long id){
+        try {
+
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.ConfirmarPedido(id));
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
+    @PostMapping("/cancelarPedido")
+    public ResponseEntity<?> cancelarPedido(@RequestParam Long id){
+        try {
+            servicio.cancelarPedido(id);
+            return ResponseEntity.status(HttpStatus.OK).body("pedido cancelado con exito");
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
+    //cuando se confirma el pado de MP
+    @PostMapping("/PagoRealizado")
+    public ResponseEntity<?> pagoRealizado(@RequestParam Long id){
+        try {
+            servicio.cancelarPedido(id);
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.pagoRealizado(id));
         }
         catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
