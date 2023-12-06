@@ -5,6 +5,7 @@ import cercanoOeste.back.entities.Pedido;
 import cercanoOeste.back.services.PedidoService;
 import cercanoOeste.back.services.PedidoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,10 +23,10 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" + e.getMessage() + "\"}"));
         }
     }
-    @GetMapping("/buscaraconfirmar")
+    @GetMapping("/buscarPedidos")
     public ResponseEntity<?> busquedaAconfirmar(){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.BusquedaAConfimar());
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.BusquedaPedidos());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
 

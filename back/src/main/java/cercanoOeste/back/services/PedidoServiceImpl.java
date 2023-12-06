@@ -29,9 +29,9 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
     }
     //Buscar pedidos a confirmar
     @Override
-    public List<Pedido> BusquedaAConfimar() throws Exception {
+    public List<Pedido> BusquedaPedidos() throws Exception {
         try {
-            List<Pedido> pedidosaconfir = pedidoRepository.BusquedaAConfimar();
+            List<Pedido> pedidosaconfir = pedidoRepository.BusquedaPedidos();
             return pedidosaconfir;
         } catch (Exception e) {
             throw new Exception(e.getMessage());

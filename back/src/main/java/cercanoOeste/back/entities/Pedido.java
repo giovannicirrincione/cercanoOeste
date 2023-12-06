@@ -44,6 +44,6 @@ public class Pedido extends Base{
     @Enumerated(EnumType.STRING)
     private TipoEnvio tipoEnvio;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<DetallePedido> detalles = new ArrayList<DetallePedido>();
 }

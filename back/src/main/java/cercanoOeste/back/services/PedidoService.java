@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface PedidoService extends BaseService<Pedido,Long>{
     DTOPedidoAconfirmar realizarPedido(Pedido pedido);
-    List<Pedido> BusquedaAConfimar() throws Exception;
+    List<Pedido> BusquedaPedidos() throws Exception;
 }
