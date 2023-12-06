@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/pedidos")
 public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceImpl>{
-
+    //CU realizar PEDIDO
     @PostMapping("/realizarPedido")
     public ResponseEntity<?> realizarPedido(@RequestBody Pedido pedido){
         try{
@@ -23,11 +23,42 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" + e.getMessage() + "\"}"));
         }
     }
+    //MOSTRAR LOS PEDIDOS A EL ADMIN
     @GetMapping("/buscarPedidos")
     public ResponseEntity<?> busquedaAconfirmar(){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.BusquedaPedidos());
         }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
+    @PostMapping("/ConfirmarPedido")
+    public ResponseEntity<?> confirmarPedido(@RequestParam Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.confirmarPedido(id));
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
+    @PostMapping("/RechazarPedido")
+    public ResponseEntity<?> rechazarPedido(@RequestParam Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.rechazarPedido(id));
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
+    @PostMapping("/PedidoListo")
+    public ResponseEntity<?> PedidoListo(@RequestParam Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.PedidoListo(id));
+        }
+        catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
 
         }

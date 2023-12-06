@@ -37,13 +37,14 @@ public class Pedido extends Base{
     @Enumerated(EnumType.STRING)
     private FormaPago formaPago;
 
-    @Column(name = "estadoPedido")
-    private String estadoPedido;
-
     @Column(name = "tipoEnvio")
     @Enumerated(EnumType.STRING)
     private TipoEnvio tipoEnvio;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<DetallePedido> detalles = new ArrayList<DetallePedido>();
+
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_estadoPedido")
+    private EstadoPedido estadoPedido;
 }
