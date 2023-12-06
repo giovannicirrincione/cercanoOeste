@@ -1,23 +1,12 @@
 package cercanoOeste.back.services;
 
-import cercanoOeste.back.Adapters.AdaptadorDistancia;
 import cercanoOeste.back.DTOS.DTOPedidoAconfirmar;
-import cercanoOeste.back.DTOS.DTOPedidoInfo;
-import cercanoOeste.back.DTOS.DTOProducto;
-import cercanoOeste.back.Factorys.FactoryAdapterCalculoDistancia;
-import cercanoOeste.back.entities.DetallePedido;
 import cercanoOeste.back.entities.Pedido;
-import cercanoOeste.back.enumerations.EstadoPedido;
-import cercanoOeste.back.enumerations.TipoEnvio;
 import cercanoOeste.back.repositories.BaseRepository;
 import cercanoOeste.back.repositories.PedidoRepository;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
