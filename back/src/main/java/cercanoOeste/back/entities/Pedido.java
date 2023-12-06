@@ -1,11 +1,9 @@
 package cercanoOeste.back.entities;
 
-import cercanoOeste.back.enumerations.EstadoPedido;
 import cercanoOeste.back.enumerations.FormaPago;
 import cercanoOeste.back.enumerations.TipoEnvio;
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -46,6 +44,6 @@ public class Pedido extends Base{
     @Enumerated(EnumType.STRING)
     private TipoEnvio tipoEnvio;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<DetallePedido> detalles = new ArrayList<DetallePedido>();
 }
