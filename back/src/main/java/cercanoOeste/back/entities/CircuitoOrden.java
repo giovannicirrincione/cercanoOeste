@@ -20,4 +20,7 @@ public class CircuitoOrden extends Base{
     @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_destino")
     private EstadoPedido destino;
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_circuito")
+    private Circuito circuito;
 }

@@ -18,6 +18,5 @@ import java.util.List;
 public class Circuito extends  Base{
     private Date fechaAlta;
     private Date fechabaja;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<CircuitoOrden> circuitos = new ArrayList<CircuitoOrden>();
+
 }
