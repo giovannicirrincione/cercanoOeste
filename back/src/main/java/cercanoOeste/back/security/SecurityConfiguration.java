@@ -45,8 +45,33 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/api/v1").permitAll()
-                                .requestMatchers("/api/v1/pedidos").hasAuthority("Admin")
-                                .anyRequest().authenticated()
+                                //filtrar por categoria en el FE
+                                .requestMatchers("/api/v1/categoria").permitAll()
+                                //get productos
+                                .requestMatchers("/api/v1/producto").permitAll()
+                                //realizarpedido
+                                .requestMatchers("/api/v1/pedidos/realizarPedido").permitAll()
+                                //confirmar pedido cliente
+                                .requestMatchers("/api/v1/pedidos/confirmarPedido").permitAll()
+                                //cancelar pedido cliente
+                                .requestMatchers("/api/v1/pedidos/cancelarPedido").permitAll()
+                                //realizar pago
+                                .requestMatchers("/api/v1/pedidos/pagoRealizado").permitAll()
+                                //listar pedidos al admin
+                                .requestMatchers("/api/v1/pedidos/buscarPedidos").hasAuthority("Admin")
+                                //aceptar pedido con tipo envio Delivery
+                                .requestMatchers("/api/v1/pedidos/aceptarPedidoDelivey").hasAuthority("Admin")
+                                //aceptar pedido con tipo envio TakeAway
+                                .requestMatchers("/api/v1/pedidos/aceptarPedidoTakeaway").hasAuthority("Admin")
+                                //rechazar pedido cualquiera sea el tipo envio
+                                .requestMatchers("/api/v1/pedidos/rechazarPedido").hasAuthority("Admin")
+                                //marcar pedido como listo para retirar
+                                .requestMatchers("/api/v1/pedidos/pedidoListo").hasAuthority("Admin")
+                                //ABM Categoria
+                                .requestMatchers("/api/v1/categoria/**").hasAuthority("Admin")
+                                //ABM Producto
+                                .requestMatchers("/api/v1/producto/**").hasAuthority("Admin")
+
                 )
                 .oauth2ResourceServer(oauth2ResourceServer ->
                         oauth2ResourceServer
