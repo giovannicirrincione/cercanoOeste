@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/categoria")
+@RequestMapping(path = "api/v1/admin/categoria")
 public class CategoriaController extends BaseControllerImpl<Categoria, CategoriaServiceImpl>{
 }

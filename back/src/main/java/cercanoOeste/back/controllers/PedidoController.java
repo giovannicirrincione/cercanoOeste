@@ -33,7 +33,7 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
 
         }
     }
-    @PostMapping("/AceptarPedidoDelivey")
+    @PostMapping("/aceptarPedidoDelivey")
     public ResponseEntity<?> AceptarPedidoDelivery(@RequestParam Long id,@RequestParam int demora,@RequestParam int costoEnvio){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.AceptarPedidoDelivery(id,demora,costoEnvio));
@@ -43,7 +43,7 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
 
         }
     }
-    @PostMapping("/AceptarPedidoTake")
+    @PostMapping("/aceptarPedidoTakeaway")
     public ResponseEntity<?> AceptarPedidoTake(@RequestParam Long id,@RequestParam int demora){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.AceptarPedidoTakeAway(id,demora));
@@ -53,7 +53,7 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
 
         }
     }
-    @PostMapping("/RechazarPedido")
+    @PostMapping("/rechazarPedido")
     public ResponseEntity<?> rechazarPedido(@RequestParam Long id){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.rechazarPedido(id));
@@ -63,7 +63,7 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
 
         }
     }
-    @PostMapping("/PedidoListo")
+    @PostMapping("/pedidoListo")
     public ResponseEntity<?> PedidoListo(@RequestParam Long id){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.PedidoListo(id));
@@ -96,7 +96,7 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
         }
     }
     //cuando se confirma el pado de MP
-    @PostMapping("/PagoRealizado")
+    @PostMapping("/pagoRealizado")
     public ResponseEntity<?> pagoRealizado(@RequestParam Long id){
         try {
             servicio.cancelarPedido(id);
