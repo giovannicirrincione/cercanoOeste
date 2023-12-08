@@ -1,6 +1,5 @@
 package cercanoOeste.back.services;
 
-import cercanoOeste.back.entities.Usuario;
 import cercanoOeste.back.repositories.BaseRepository;
 import cercanoOeste.back.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

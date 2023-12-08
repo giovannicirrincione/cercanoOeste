@@ -1,6 +1,5 @@
 package cercanoOeste.back.controllers;
 
-import cercanoOeste.back.entities.Usuario;
 import cercanoOeste.back.services.UsuarioServiceImpl;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

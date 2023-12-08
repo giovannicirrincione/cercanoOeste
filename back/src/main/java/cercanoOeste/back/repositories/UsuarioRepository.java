@@ -1,6 +1,5 @@
 package cercanoOeste.back.repositories;
 
-import cercanoOeste.back.entities.Usuario;
 import org.springframework.stereotype.Repository;
 
 @Repository

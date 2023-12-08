@@ -72,6 +72,8 @@ public class SecurityConfiguration {
                                 .requestMatchers("/api/v1/categoria/**").hasAuthority("Admin")
                                 //ABM Producto
                                 .requestMatchers("/api/v1/producto/**").hasAuthority("Admin")
+                                //Get all productos dados de alta
+                                .requestMatchers("/api/v1/producto/busquedaPorAlta").permitAll()
 
                 )
                 .oauth2ResourceServer(oauth2ResourceServer ->

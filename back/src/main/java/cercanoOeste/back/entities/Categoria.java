@@ -19,8 +19,6 @@ import java.util.Date;
 public class Categoria extends Base{
     private String nombreCategoria;
 
-    @Column(name = "fechaAlta")
-    private LocalDateTime fechaAlta;
 
     @Column(name = "fechaBaja")
     private LocalDateTime fechaBaja;
