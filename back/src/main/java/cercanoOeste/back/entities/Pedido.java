@@ -1,6 +1,5 @@
 package cercanoOeste.back.entities;
 
-import cercanoOeste.back.enumerations.FormaPago;
 import cercanoOeste.back.enumerations.TipoEnvio;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,10 +33,6 @@ public class Pedido extends Base{
 
     @Column(name = "fechaHoraBaja")
     private LocalDateTime fechaHoraBaja;
-
-    @Column(name="formaPago")
-    @Enumerated(EnumType.STRING)
-    private FormaPago formaPago;
 
     @Column(name = "tipoEnvio")
     @Enumerated(EnumType.STRING)

@@ -1,6 +1,5 @@
 package cercanoOeste.back.entities;
 
-import cercanoOeste.back.enumerations.FormaPago;
 import cercanoOeste.back.enumerations.Rol;
 import jakarta.persistence.*;
 import lombok.*;

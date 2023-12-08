@@ -16,14 +16,8 @@ public class Producto extends Base{
     private float monto;
     private String urlImagen;
 
-    @Column(name = "fechaAlta")
-    private LocalDateTime fechaAlta;
-
     @Column(name = "fechaBaja")
     private LocalDateTime fechaBaja;
-
-    @Column(name = "fechaModificacion")
-    private LocalDateTime fechaModificacion;
 
     @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_categoria")
