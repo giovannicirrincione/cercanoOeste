@@ -46,6 +46,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/api/v1").permitAll()
+                                //Get all productos dados de alta
+                                .requestMatchers("/api/v1/producto/busquedaPorAlta").permitAll()
+                                // get all categoria dado de alta
+                                .requestMatchers("/api/v1/categoria/busquedaPorAltaCat").permitAll()
                                 //filtrar por categoria en el FE
                                 .requestMatchers(HttpMethod.GET,"/api/v1/categoria").permitAll()
                                 //get productos
@@ -78,10 +82,7 @@ public class SecurityConfiguration {
                                 .requestMatchers(HttpMethod.POST,"/api/v1/producto").hasAuthority("Admin")
                                 .requestMatchers(HttpMethod.PUT,"/api/v1/producto/{id}").hasAuthority("Admin")
                                 .requestMatchers(HttpMethod.DELETE,"/api/v1/producto/{id}").hasAuthority("Admin")
-                                //Get all productos dados de alta
-                                .requestMatchers("/api/v1/producto/busquedaPorAlta").permitAll()
-                                // get all categoria dado de alta
-                                .requestMatchers("/api/v1/categoria/busquedaPorAltaCat").permitAll()
+
                 )
                 .oauth2ResourceServer(oauth2ResourceServer ->
                         oauth2ResourceServer
