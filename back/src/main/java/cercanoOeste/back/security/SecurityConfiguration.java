@@ -2,6 +2,7 @@ package cercanoOeste.back.security;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -46,9 +47,9 @@ public class SecurityConfiguration {
                         authorizeRequests
                                 .requestMatchers("/api/v1").permitAll()
                                 //filtrar por categoria en el FE
-                                .requestMatchers("/api/v1/categoria").permitAll()
+                                .requestMatchers(HttpMethod.GET,"/api/v1/categoria").permitAll()
                                 //get productos
-                                .requestMatchers("/api/v1/producto").permitAll()
+                                .requestMatchers(HttpMethod.GET,"/api/v1/producto").permitAll()
                                 //realizarpedido
                                 .requestMatchers("/api/v1/pedidos/realizarPedido").permitAll()
                                 //confirmar pedido cliente
@@ -60,7 +61,7 @@ public class SecurityConfiguration {
                                 //listar pedidos al admin
                                 .requestMatchers("/api/v1/pedidos/buscarPedidos").hasAuthority("Admin")
                                 //aceptar pedido con tipo envio Delivery
-                                .requestMatchers("/api/v1/pedidos/aceptarPedidoDelivey").hasAuthority("Admin")
+                                .requestMatchers("/api/v1/pedidos/aceptarPedidoDelivery").hasAuthority("Admin")
                                 //aceptar pedido con tipo envio TakeAway
                                 .requestMatchers("/api/v1/pedidos/aceptarPedidoTakeaway").hasAuthority("Admin")
                                 //rechazar pedido cualquiera sea el tipo envio

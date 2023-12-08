@@ -33,7 +33,7 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
 
         }
     }
-    @PostMapping("/aceptarPedidoDelivey")
+    @PostMapping("/aceptarPedidoDelivery")
     public ResponseEntity<?> AceptarPedidoDelivery(@RequestParam Long id,@RequestParam int demora,@RequestParam int costoEnvio){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.AceptarPedidoDelivery(id,demora,costoEnvio));
