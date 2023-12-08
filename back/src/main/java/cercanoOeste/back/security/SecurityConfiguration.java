@@ -69,12 +69,19 @@ public class SecurityConfiguration {
                                 //marcar pedido como listo para retirar
                                 .requestMatchers("/api/v1/pedidos/pedidoListo").hasAuthority("Admin")
                                 //ABM Categoria
-                                .requestMatchers("/api/v1/categoria/**").hasAuthority("Admin")
+                                .requestMatchers(HttpMethod.GET,"/api/v1/categoria/{id}").hasAuthority("Admin")
+                                .requestMatchers(HttpMethod.POST,"/api/v1/categoria").hasAuthority("Admin")
+                                .requestMatchers(HttpMethod.PUT,"/api/v1/categoria/{id}").hasAuthority("Admin")
+                                .requestMatchers(HttpMethod.DELETE,"/api/v1/categoria/{id}").hasAuthority("Admin")
                                 //ABM Producto
-                                .requestMatchers("/api/v1/producto/**").hasAuthority("Admin")
+                                .requestMatchers(HttpMethod.GET,"/api/v1/producto/{id}").hasAuthority("Admin")
+                                .requestMatchers(HttpMethod.POST,"/api/v1/producto").hasAuthority("Admin")
+                                .requestMatchers(HttpMethod.PUT,"/api/v1/producto/{id}").hasAuthority("Admin")
+                                .requestMatchers(HttpMethod.DELETE,"/api/v1/producto/{id}").hasAuthority("Admin")
                                 //Get all productos dados de alta
                                 .requestMatchers("/api/v1/producto/busquedaPorAlta").permitAll()
-
+                                // get all categoria dado de alta
+                                .requestMatchers("/api/v1/categoria/busquedaPorAltaCat").permitAll()
                 )
                 .oauth2ResourceServer(oauth2ResourceServer ->
                         oauth2ResourceServer
